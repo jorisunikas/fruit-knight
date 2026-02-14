@@ -1,0 +1,34 @@
+package game.Entities;
+
+import game.Entity;
+import processing.core.PImage;
+import processing.data.JSONObject;
+import game.App;
+
+/**
+ * Platform1
+ */
+public class Platform2 extends Entity {
+    private static PImage texture;
+    private static final int spriteWidth = 32;
+    private static final int spriteHeight = 9;
+
+    public Platform2(float x, float y){
+        super(x, y, spriteWidth, spriteHeight);
+    }
+
+    public void draw(App app){
+        app.image(texture, x, y, spriteWidth, spriteHeight);
+    }
+
+    public static void loadTexture(String path, App app) {
+        texture = app.loadImage(path).get(16, 0, spriteWidth, spriteHeight);
+    }
+    public void saveObject(App app, String filename){
+        JSONObject obj = new JSONObject();
+        obj.setFloat("x", x);
+        obj.setFloat("y", y);
+        obj.setString("class", "Platform2"); 
+        app.saveJSONObject(obj, filename);
+    }
+}

@@ -2,8 +2,6 @@ package game;
 
 import java.util.ArrayList;
 
-import processing.core.PApplet;
-
 /**
  * Level
  */
@@ -14,7 +12,7 @@ public class Level {
         objs = new ArrayList<>();
     }
 
-    public void draw(PApplet app){
+    public void draw(App app){
         for (Drawable drawable : objs) {
             drawable.draw(app);
         }
