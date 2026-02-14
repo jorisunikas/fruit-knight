@@ -35,11 +35,12 @@ public class Player extends Entity {
         texturePack = app.loadImage(path);
         Player.texture = texturePack.get(9, 9, spriteWidth, spriteHeight);
     }
-    public void saveObject(App app, String filename){
+
+    public JSONObject toJSONObject(){
         JSONObject obj = new JSONObject();
         obj.setFloat("x", x);
         obj.setFloat("y", y);
         obj.setString("class", "Player");
-        app.saveJSONObject(obj, filename);
+        return obj;
     }
 }

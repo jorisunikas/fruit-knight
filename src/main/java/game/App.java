@@ -1,5 +1,7 @@
 package game;
 
+import java.awt.MouseInfo;
+
 import game.Entities.Ground1;
 import game.Entities.Ground2;
 import game.Entities.Platform1;
@@ -14,8 +16,8 @@ import processing.data.JSONObject;
 public class App extends PApplet {
     private Game game;
     public float zoom = 4.0f;
-    public int screenWidth = 1000;
-    public int screenHeight = 700;
+    public int screenWidth = 1024;
+    public int screenHeight = 768;
     public int worldWidth = screenWidth / (int) zoom;
     public int worldHeight = screenHeight / (int) zoom;
     public int tileSize = 32;
@@ -42,6 +44,7 @@ public class App extends PApplet {
         background(255);
         scale(4.0f);
         drawGrid();
+        showMousePosition();
 
         game.render();
         game.update();
@@ -56,6 +59,11 @@ public class App extends PApplet {
                 rect(j*16, i*16, 16, 16);
             }
         }
+    }
+
+    private void showMousePosition(){
+        fill(0, 0, 255);
+        text(String.format("X: %f\nY: %f\n", mouseX/zoom, mouseY/zoom), 10, 10, 100, 100);
     }
 
     public static void main(String[] args) {
