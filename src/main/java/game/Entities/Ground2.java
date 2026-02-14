@@ -24,11 +24,11 @@ public class Ground2 extends Entity {
     public static void loadTexture(String path, App app) {
         texture = app.loadImage(path).get(0, 16, spriteWidth, spriteHeight);
     }
-    public void saveObject(App app){
+    public JSONObject toJSONObject(){
         JSONObject obj = new JSONObject();
         obj.setFloat("x", x);
         obj.setFloat("y", y);
         obj.setString("class", "Ground2"); 
-        app.saveJSONObject(obj, "test.json");
+        return obj;
     }
 }

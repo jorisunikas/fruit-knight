@@ -24,11 +24,11 @@ public class Platform2 extends Entity {
     public static void loadTexture(String path, App app) {
         texture = app.loadImage(path).get(16, 0, spriteWidth, spriteHeight);
     }
-    public void saveObject(App app, String filename){
+    public JSONObject toJSONObject(){
         JSONObject obj = new JSONObject();
         obj.setFloat("x", x);
         obj.setFloat("y", y);
         obj.setString("class", "Platform2"); 
-        app.saveJSONObject(obj, filename);
+        return obj;
     }
 }

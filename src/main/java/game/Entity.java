@@ -23,5 +23,5 @@ public abstract class Entity {
     }
 
     abstract public void draw(App app);
-    abstract public void saveObject(App app, String filename);
+    abstract public JSONObject toJSONObject();
 }
