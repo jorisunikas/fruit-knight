@@ -34,6 +34,8 @@ public class Game {
 
     public void update() {
         player.update(currentLevel.getEntities());
+        app.camera.followPlayer(player);
+        app.camera.update();
     }
 
     private void loadTextures() {

@@ -2,8 +2,6 @@ package game;
 
 import java.util.ArrayList;
 
-import game.Entities.Ground1;
-
 /**
  * PhysicsEntity
  */

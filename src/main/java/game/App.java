@@ -15,13 +15,16 @@ import processing.data.JSONObject;
  */
 public class App extends PApplet {
     private Game game;
-    public float zoom = 2.0f;
+    public Camera camera;
+    public float cameraZoom = 4.0f;
     public int screenWidth = 1024;
     public int screenHeight = 768;
-    public int worldWidth = screenWidth / (int) zoom;
-    public int worldHeight = screenHeight / (int) zoom;
+    public int worldWidth = screenWidth / (int) cameraZoom;
+    public int worldHeight = screenHeight / (int) cameraZoom;
     public int tileSize = 32;
-    private boolean editorMode = false;
+    private float cameraSmoothness = 0.05f;
+    public boolean editorMode = false;
+    public boolean debugMode = true;
     PImage img;
 
     @Override
@@ -33,6 +36,7 @@ public class App extends PApplet {
     @Override
     public void setup() {
         game = new Game(this);
+        camera = new Camera(this, cameraSmoothness, cameraZoom, game.player);
 
         frameRate(60);
         pixelDensity(displayDensity());
@@ -41,12 +45,15 @@ public class App extends PApplet {
 
     @Override
     public void draw() {
-        background(255);
-        scale(zoom);
-        drawGrid();
 
+        camera.begin();
+        background(255);
         game.render();
+        camera.end();
+
         game.update();
+        camera.followPlayer(game.player);
+        camera.update();
     }
 
     private void drawGrid() {
@@ -63,7 +70,7 @@ public class App extends PApplet {
 
     private void showMousePosition() {
         fill(0, 0, 255);
-        text(String.format("X: %f\nY: %f\n", mouseX / zoom, mouseY / zoom), 10, 10, 100, 100);
+        text(String.format("X: %f\nY: %f\n", mouseX / cameraZoom, mouseY / cameraZoom), 10, 10, 100, 100);
     }
 
     public static void main(String[] args) {

@@ -31,7 +31,6 @@ public class Player extends PhysicsEntity {
     }
 
     public void update(ArrayList<Entity> solids) {
-        // Handle movement
         if (leftPressed) {
             velocityX -= acceleration + constanAcc;
         }
@@ -39,19 +38,19 @@ public class Player extends PhysicsEntity {
             velocityX += acceleration + constanAcc;
         }
 
-        // Handle jump
         if (jumpPressed && onGround) {
             velocityY = -jumpStrength;
             jumpPressed = false;
             onGround = false;
         }
 
-        // Apply physics
         applyPhysics(solids);
     }
 
     public void draw(App app) {
-        showPhysics();
+        if(app.debugMode){
+            showPhysics();
+        }
         app.image(texture, x, y, spriteWidth, spriteHeight);
     }
 
@@ -86,7 +85,8 @@ public class Player extends PhysicsEntity {
 
     private void showPhysics() {
         app.fill(0, 0, 120);
-        app.text(String.format("posX: %3f, posY: %3f\nvelX: %3f, velY: %3f\ngrnd: %b", x, y, velocityX, velocityY, onGround), 10, 10);
+        app.textSize(8);
+        app.text(String.format("posX: %3f, posY: %3f\nvelX: %3f, velY: %3f\nGround: %b", x, y, velocityX, velocityY, onGround), 8, 8);
 
     }
 }
