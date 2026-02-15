@@ -1,21 +1,15 @@
 package game;
 
-import java.awt.MouseInfo;
-
-import game.Entities.Ground1;
-import game.Entities.Ground2;
-import game.Entities.Platform1;
-import game.Entities.Platform2;
 import processing.core.PApplet;
 import processing.core.PImage;
-import processing.data.JSONObject;
 
 /*
  * Hello world!
  */
 public class App extends PApplet {
     private Game game;
-    public Camera camera;
+    public Camera cameraRelease;
+    public Camera cameraEdit;
     public float cameraZoom = 4.0f;
     public int screenWidth = 1024;
     public int screenHeight = 768;
@@ -23,7 +17,7 @@ public class App extends PApplet {
     public int worldHeight = screenHeight / (int) cameraZoom;
     public int tileSize = 32;
     private float cameraSmoothness = 0.05f;
-    public boolean editorMode = false;
+    public boolean editMode = false;
     public boolean debugMode = true;
     PImage img;
 
@@ -36,7 +30,8 @@ public class App extends PApplet {
     @Override
     public void setup() {
         game = new Game(this);
-        camera = new Camera(this, cameraSmoothness, cameraZoom, game.player);
+        cameraRelease = new Camera(this, cameraSmoothness, cameraZoom, game.player);
+        cameraEdit = new Camera(this);
 
         frameRate(60);
         pixelDensity(displayDensity());
@@ -45,17 +40,32 @@ public class App extends PApplet {
 
     @Override
     public void draw() {
+        if (!editMode)
+            drawRelease();
+        else
+            drawEdit();
+    }
 
-        camera.begin();
+    private void drawRelease() {
+        cameraRelease.begin();
         background(255);
         game.render();
-        camera.end();
-        if(debugMode)
-        game.renderDebug();
+        cameraRelease.end();
+
+        if (debugMode)
+            game.renderDebug();
 
         game.update();
-        camera.followPlayer(game.player);
-        camera.update();
+        cameraRelease.followPlayer(game.player);
+        cameraRelease.update();
+    }
+
+    private void drawEdit() {
+        cameraEdit.begin();
+        background(255);
+        game.render();
+        cameraEdit.end();
+        cameraEdit.update();
     }
 
     private void drawGrid() {
@@ -81,11 +91,32 @@ public class App extends PApplet {
 
     public void keyPressed() {
         game.player.handleKeyPressed(key, keyCode);
-        if(key == 't') debugMode = !debugMode;
+        if (key == 't')
+            debugMode = !debugMode;
+        if (key == 'e')
+            editMode = !editMode;
 
     }
 
     public void keyReleased() {
-        game.player.handleKeyReleased(key, keyCode);
+        if (editMode) {
+
+        } else {
+
+            game.player.handleKeyReleased(key, keyCode);
+        }
+    }
+
+    public void mouseWheel(processing.event.MouseEvent event) {
+        // Zoom with mouse wheel
+        cameraEdit.adjustZoom(-event.getCount() * 0.1f);
+    }
+
+    public void mouseDragged() {
+        if (editMode) {
+            float dx = mouseX - pmouseX;
+            float dy = mouseY - pmouseY;
+            cameraEdit.panWithMouse(dx, dy);
+        }
     }
 }

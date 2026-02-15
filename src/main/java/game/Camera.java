@@ -1,7 +1,5 @@
 package game;
 
-import sun.awt.PlatformFont;
-
 /**
  * Camera
  */
@@ -11,6 +9,8 @@ public class Camera {
     private float targetX, targetY;
     private float smoothness;
     private float zoom;
+    private final float zoomMin = 0.5f;
+    private final float zoomMax = 8f;
 
     // Optional bounds
     private boolean useBounds;
@@ -32,6 +32,11 @@ public class Camera {
         this.smoothness = smoothness;
         this.zoom = zoom;
         followPlayer(p);
+    }
+
+    public Camera(App app, boolean editMode) {
+        this(app);
+        this.smoothness = 0;
     }
 
     /**
@@ -88,7 +93,7 @@ public class Camera {
      */
     public void apply() {
         app.translate(app.width / 2, app.height / 2); // Move to screen center
-        app.scale(zoom-1); // Apply zoom
+        app.scale(zoom); // Apply zoom
         app.translate(-x - app.width / 2, -y - app.height / 2); // Apply camera offset
     }
 
@@ -152,5 +157,21 @@ public class Camera {
 
     private float constrain(float value, float min, float max) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    public void setZoom(float zoom) {
+        this.zoom = constrain(zoom, zoomMin, zoomMax);
+    }
+
+    public void adjustZoom(float delta) {
+        setZoom(zoom + delta);
+    }
+
+    public void panWithMouse(float dx, float dy) {
+        targetX -= dx / zoom;
+        targetY -= dy / zoom;
+        
+        x = targetX;
+        y = targetY;
     }
 }
