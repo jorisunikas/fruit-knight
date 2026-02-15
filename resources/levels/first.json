@@ -1,4 +1,5 @@
 [
+    {"class": "Player", "x": 40.0, "y": 100.0},
   {"class": "Ground1", "x": 0.0, "y": 128.0},
   {"class": "Ground1", "x": 16.0, "y": 128.0},
   {"class": "Ground1", "x": 32.0, "y": 128.0},

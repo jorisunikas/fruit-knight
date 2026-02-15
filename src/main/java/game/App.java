@@ -50,6 +50,8 @@ public class App extends PApplet {
         background(255);
         game.render();
         camera.end();
+        if(debugMode)
+        game.renderDebug();
 
         game.update();
         camera.followPlayer(game.player);
@@ -79,6 +81,8 @@ public class App extends PApplet {
 
     public void keyPressed() {
         game.player.handleKeyPressed(key, keyCode);
+        if(key == 't') debugMode = !debugMode;
+
     }
 
     public void keyReleased() {

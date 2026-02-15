@@ -13,6 +13,8 @@ import processing.data.JSONObject;
  */
 public class Level {
     private ArrayList<Entity> objs;
+    private float startingPlayerX;
+    private float startingPlayerY;
     private App app;
     public String name;
 
@@ -24,12 +26,21 @@ public class Level {
         for (int i = 0; i < array.size(); i++) {
             JSONObject item = array.getJSONObject(i);
             float x = item.getInt("x"), y = item.getInt("y");
-            objs.add(createEntity(item.getString("class"), x, y));
+            Entity e = createEntity(item.getString("class"), x, y);
+            if(e != null) objs.add(e);
         }
     }
 
     public ArrayList<Entity> getEntities(){
         return objs;
+    }
+
+    public float getPlayerX(){
+        return startingPlayerX;
+    }
+
+    public float getPlayerY(){
+        return startingPlayerY;
     }
 
     private Entity createEntity(String className, float x, float y) {
@@ -42,6 +53,10 @@ public class Level {
                 return new Platform1(x, y);
             case "Platform2":
                 return new Platform2(x, y);
+            case "Player":
+                startingPlayerX = x;
+                startingPlayerY = y;
+                return null;
             default:
                 throw new IllegalArgumentException(
                         String.format("Unknown entity class '%s' at (%f, %f)",

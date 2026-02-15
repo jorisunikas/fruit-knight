@@ -26,7 +26,11 @@ public class Player extends PhysicsEntity {
 
     Player(App app, float x, float y) {
         super(x, y, spriteWidth, spriteHeight);
+        this.app = app;
+    }
 
+    public Player(App app) {
+        super(0, 0, spriteWidth, spriteHeight);
         this.app = app;
     }
 
@@ -48,9 +52,6 @@ public class Player extends PhysicsEntity {
     }
 
     public void draw(App app) {
-        if(app.debugMode){
-            showPhysics();
-        }
         app.image(texture, x, y, spriteWidth, spriteHeight);
     }
 
@@ -83,10 +84,8 @@ public class Player extends PhysicsEntity {
         return obj;
     }
 
-    private void showPhysics() {
-        app.fill(0, 0, 120);
-        app.textSize(8);
-        app.text(String.format("posX: %3f, posY: %3f\nvelX: %3f, velY: %3f\nGround: %b", x, y, velocityX, velocityY, onGround), 8, 8);
-
+    public void showDebugMovement(float x, float y) {
+        app.text(String.format("posX: %3f, posY: %3f\nvelX: %3f, velY: %3f\nGround: %b", this.x, this.y, velocityX, velocityY,
+                onGround), x, y);
     }
 }

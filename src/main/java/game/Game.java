@@ -19,12 +19,14 @@ public class Game {
 
     public Game(App app) {
         this.app = app;
-        player = new Player(app, 80, 100);
+        player = new Player(app);
         levels = new ArrayList<>();
 
         loadTextures();
         loadLevels();
         currentLevel = levels.get(0);
+        player.x = currentLevel.getPlayerX();
+        player.y = currentLevel.getPlayerY();
     }
 
     public void render() {
@@ -34,8 +36,6 @@ public class Game {
 
     public void update() {
         player.update(currentLevel.getEntities());
-        app.camera.followPlayer(player);
-        app.camera.update();
     }
 
     private void loadTextures() {
@@ -61,5 +61,12 @@ public class Game {
                 System.out.println(String.format("Level '%s' loaded.\n", file.getName()));
             }
         }
+    }
+
+    public void renderDebug(){
+        float size = 16;
+        app.fill(0, 0, 120);
+        app.textSize(size);
+        player.showDebugMovement(size, size);
     }
 }
