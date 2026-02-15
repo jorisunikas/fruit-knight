@@ -23,7 +23,9 @@ public class Game {
         levels = new ArrayList<>();
 
         loadTextures();
+        loadAnimations();
         loadLevels();
+
         currentLevel = levels.get(0);
         player.x = currentLevel.getPlayerX();
         player.y = currentLevel.getPlayerY();
@@ -61,6 +63,10 @@ public class Game {
                 System.out.println(String.format("Level '%s' loaded.\n", file.getName()));
             }
         }
+    }
+
+    private void loadAnimations(){
+        player.loadAnimations();
     }
 
     public void renderDebug(){

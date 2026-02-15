@@ -10,36 +10,59 @@ import processing.data.JSONObject;
  * Player
  */
 public class Player extends PhysicsEntity {
-    private static PImage texture;
-    private static PImage texturePack;
-    private final static int spriteWidth = 13;
-    private final static int spriteHeight = 19;
     private App app;
 
+    // textures
+    private static PImage texturePack;
+
+    private final static int spriteWidth = 14;
+    private final static int spriteHeight = 19;
+    private PImage[] idleFrames;
+    private PImage[] runFrames;
+
+    private PImage[] currentAnimation;
+    private int currentFrame = 0;
+    private int frameCounter = 0;
+    private int frameDelay = 12; // Frames to wait before switching
+
+    private enum State {
+        IDLE, RUNNING
+    }
+
+    private State currentState;
+
+    private boolean facingRight = true;
+
+    // movement
     private boolean leftPressed = false;
     private boolean rightPressed = false;
     private boolean jumpPressed = false;
-
     private float acceleration = 0.8f;
     private float constanAcc = 0.0f;
     private float jumpStrength = 4.8f;
 
-    Player(App app, float x, float y) {
+    public Player(App app, float x, float y) {
         super(x, y, spriteWidth, spriteHeight);
         this.app = app;
+
+        currentFrame = 0;
+        frameCounter = 0;
+        frameDelay = 6;
+        currentState = State.IDLE;
     }
 
     public Player(App app) {
-        super(0, 0, spriteWidth, spriteHeight);
-        this.app = app;
+        this(app, 0, 0);
     }
 
     public void update(ArrayList<Entity> solids) {
         if (leftPressed) {
             velocityX -= acceleration + constanAcc;
+            facingRight = false;
         }
         if (rightPressed) {
             velocityX += acceleration + constanAcc;
+            facingRight = true;
         }
 
         if (jumpPressed && onGround) {
@@ -49,10 +72,23 @@ public class Player extends PhysicsEntity {
         }
 
         applyPhysics(solids);
+
+        updateAnimation();
     }
 
     public void draw(App app) {
-        app.image(texture, x, y, spriteWidth, spriteHeight);
+        app.pushMatrix();
+
+        // Flip sprite based on direction
+        if (!facingRight) {
+            app.translate(x + spriteWidth, y);
+            app.scale(-1, 1);
+            app.image(currentAnimation[currentFrame], 0, 0, spriteWidth, spriteHeight);
+        } else {
+            app.image(currentAnimation[currentFrame], x, y, spriteWidth, spriteHeight);
+        }
+
+        app.popMatrix();
     }
 
     public void handleKeyPressed(char k, int kc) {
@@ -73,7 +109,6 @@ public class Player extends PhysicsEntity {
 
     public static void loadTexture(String path, App app) {
         texturePack = app.loadImage(path);
-        Player.texture = texturePack.get(9, 9, spriteWidth, spriteHeight);
     }
 
     public JSONObject toJSONObject() {
@@ -85,7 +120,55 @@ public class Player extends PhysicsEntity {
     }
 
     public void showDebugMovement(float x, float y) {
-        app.text(String.format("posX: %3f, posY: %3f\nvelX: %3f, velY: %3f\nGround: %b", this.x, this.y, velocityX, velocityY,
+        app.text(String.format("posX: %3f, posY: %3f\nvelX: %3f, velY: %3f\nGround: %b", this.x, this.y, velocityX,
+                velocityY,
                 onGround), x, y);
+    }
+
+    public void loadAnimations() {
+
+        idleFrames = new PImage[4];
+        for (int i = 0; i < idleFrames.length; i++) {
+            idleFrames[i] = texturePack.get(9 + 32 * i, 9, spriteWidth, spriteHeight);
+        }
+
+        System.out.println(idleFrames.length);
+        runFrames = new PImage[12];
+        for (int j = 0; j < 2; j++)
+            for (int i = 0; i < runFrames.length / 2; i++) {
+                runFrames[j * 6 + i] = texturePack.get(8 + 32 * i, 74 + 32 * j, spriteWidth, spriteHeight);
+            }
+
+        currentAnimation = idleFrames;
+        
+    }
+
+    private void updateAnimation() {
+        State previousState = currentState;
+
+        if (velocityX != 0)
+            currentState = State.RUNNING;
+        else
+            currentState = State.IDLE;
+
+        if (currentState != previousState) {
+            currentFrame = 0;
+            frameCounter = 0;
+
+            switch (currentState) {
+                case IDLE:
+                    currentAnimation = idleFrames;
+                    break;
+                case RUNNING:
+                    currentAnimation = runFrames;
+                    break;
+            }
+        }
+        frameCounter++;
+        if (frameCounter >= frameDelay) {
+            frameCounter = 0;
+            currentFrame = (currentFrame + 1) % currentAnimation.length;
+        }
+
     }
 }
