@@ -12,7 +12,7 @@ import processing.data.JSONObject;
  * Level
  */
 public class Level {
-    ArrayList<Entity> objs;
+    private ArrayList<Entity> objs;
     private App app;
     public String name;
 
@@ -26,6 +26,10 @@ public class Level {
             float x = item.getInt("x"), y = item.getInt("y");
             objs.add(createEntity(item.getString("class"), x, y));
         }
+    }
+
+    public ArrayList<Entity> getEntities(){
+        return objs;
     }
 
     private Entity createEntity(String className, float x, float y) {

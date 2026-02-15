@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.TextArea;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -16,23 +15,25 @@ public class Game {
     App app;
     Player player;
     ArrayList<Level> levels;
+    Level currentLevel;
 
     public Game(App app) {
         this.app = app;
-        player = new Player(app, 80, 112-4);
+        player = new Player(app, 80, 100);
         levels = new ArrayList<>();
 
         loadTextures();
         loadLevels();
+        currentLevel = levels.get(0);
     }
 
     public void render() {
-        levels.get(0).draw();
+        currentLevel.draw();
         player.draw(app);
     }
 
     public void update() {
-        player.move();
+        player.update(currentLevel.getEntities());
     }
 
     private void loadTextures() {
