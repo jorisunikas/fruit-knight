@@ -6,7 +6,8 @@ import processing.data.JSONObject;
  * Entity
  */
 public abstract class Entity {
-    protected float x, y, width, height;
+    public float x, y;
+    protected float width, height;
 
     public Entity(float x, float y, float width, float height) {
         this.x = x;
@@ -60,5 +61,6 @@ public abstract class Entity {
     }
 
     abstract public void draw(App app);
+    abstract public void draw(App app, float scalar);
     abstract public JSONObject toJSONObject();
 }

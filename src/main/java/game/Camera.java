@@ -116,22 +116,22 @@ public class Camera {
      * Convert screen coordinates to world coordinates
      */
     public float screenToWorldX(float screenX) {
-        return screenX + x;
+        return (screenX - app.width / 2) / zoom + x + app.width / 2;
     }
 
     public float screenToWorldY(float screenY) {
-        return screenY + y;
+        return (screenY - app.height / 2) / zoom + y + app.height / 2;
     }
 
     /**
      * Convert world coordinates to screen coordinates
      */
     public float worldToScreenX(float worldX) {
-        return worldX - x;
+        return (worldX - x) * zoom + app.width / 2;
     }
 
     public float worldToScreenY(float worldY) {
-        return worldY - y;
+        return (worldY - y) * zoom + app.height / 2;
     }
 
     // Getters
@@ -170,8 +170,12 @@ public class Camera {
     public void panWithMouse(float dx, float dy) {
         targetX -= dx / zoom;
         targetY -= dy / zoom;
-        
+
         x = targetX;
         y = targetY;
+    }
+
+    public float getZoom() {
+        return zoom;
     }
 }

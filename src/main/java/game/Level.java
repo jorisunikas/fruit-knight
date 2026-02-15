@@ -27,20 +27,27 @@ public class Level {
             JSONObject item = array.getJSONObject(i);
             float x = item.getInt("x"), y = item.getInt("y");
             Entity e = createEntity(item.getString("class"), x, y);
-            if(e != null) objs.add(e);
+            if (e != null)
+                objs.add(e);
         }
     }
 
-    public ArrayList<Entity> getEntities(){
+    public ArrayList<Entity> getEntities() {
         return objs;
     }
 
-    public float getPlayerX(){
+    public float getPlayerX() {
         return startingPlayerX;
     }
 
-    public float getPlayerY(){
+    public float getPlayerY() {
         return startingPlayerY;
+    }
+
+    public void addEntity(Entity e) {
+        if (e == null)
+            return;
+        objs.add(e);
     }
 
     private Entity createEntity(String className, float x, float y) {
@@ -64,12 +71,17 @@ public class Level {
         }
     }
 
+    public void removeEntity(Entity entity) {
+        objs.remove(entity);
+    }
+
     public void draw() {
         for (Entity entity : objs) {
             entity.draw(app);
         }
     }
-    public void saveToJSON(){
+
+    public void saveToJSON() {
         JSONArray arr = new JSONArray();
         for (Entity entity : objs) {
             arr.append(entity.toJSONObject());

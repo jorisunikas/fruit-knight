@@ -10,6 +10,7 @@ public class App extends PApplet {
     private Game game;
     public Camera cameraRelease;
     public Camera cameraEdit;
+    private LevelEditor editor;
     public float cameraZoom = 4.0f;
     public int screenWidth = 1024;
     public int screenHeight = 768;
@@ -32,6 +33,7 @@ public class App extends PApplet {
         game = new Game(this);
         cameraRelease = new Camera(this, cameraSmoothness, cameraZoom, game.player);
         cameraEdit = new Camera(this);
+        editor = new LevelEditor(this, cameraEdit, game.currentLevel);
 
         frameRate(60);
         pixelDensity(displayDensity());
@@ -61,10 +63,14 @@ public class App extends PApplet {
     }
 
     private void drawEdit() {
+
         cameraEdit.begin();
         background(255);
         game.render();
+        editor.draw();
         cameraEdit.end();
+
+        editor.drawMenu();
         cameraEdit.update();
     }
 
@@ -119,4 +125,15 @@ public class App extends PApplet {
             cameraEdit.panWithMouse(dx, dy);
         }
     }
+
+    public void mousePressed() {
+        if (editMode) {
+            if (mouseButton == LEFT)
+                editor.handleMousePressed(mouseX, mouseY);
+            else if (mouseButton == RIGHT) {
+                editor.handleMouseRightClick(mouseX, mouseY); // ← Add this
+            }
+        }
+    }
+
 }

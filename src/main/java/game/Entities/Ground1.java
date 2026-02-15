@@ -10,8 +10,8 @@ import game.App;
  */
 public class Ground1 extends Entity {
     private static PImage texture;
-    private static final int spriteWidth = 16;
-    private static final int spriteHeight = 16;
+    public static final int spriteWidth = 16;
+    public static final int spriteHeight = 16;
 
     public Ground1(float x, float y){
         super(x, y, spriteWidth, spriteHeight);
@@ -19,6 +19,10 @@ public class Ground1 extends Entity {
 
     public void draw(App app){
         app.image(texture, x, y, spriteWidth, spriteHeight);
+    }
+
+    public void draw(App app, float scalar){
+        app.image(texture, x, y, spriteWidth*scalar, spriteHeight*scalar);
     }
 
     public static void loadTexture(String path, App app) {

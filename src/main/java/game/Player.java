@@ -15,8 +15,8 @@ public class Player extends PhysicsEntity {
     // textures
     private static PImage texturePack;
 
-    private final static int spriteWidth = 14;
-    private final static int spriteHeight = 19;
+    public final static int spriteWidth = 14;
+    public final static int spriteHeight = 19;
     private PImage[] idleFrames;
     private PImage[] runFrames;
 
@@ -89,6 +89,10 @@ public class Player extends PhysicsEntity {
         }
 
         app.popMatrix();
+    }
+
+    public void draw(App app, float scalar){
+        draw(app);
     }
 
     public void handleKeyPressed(char k, int kc) {
