@@ -16,7 +16,7 @@ public class LevelEditor {
         this.app = app;
         this.level = level;
         this.camera = camera;
-        this.menu = new Menu(app, app.width - 300, 10);
+        this.menu = new Menu(app, app.width - 242, 32);
     }
 
     public void draw() {
@@ -109,8 +109,8 @@ public class LevelEditor {
         app.strokeWeight(1 / camera.getZoom());
 
         // Just draw a large grid area (e.g., -5000 to +5000)
-        float gridStart = -4096;
-        float gridEnd = 4096;
+        float gridStart = -2048;
+        float gridEnd = 2048;
 
         // Draw vertical lines
         for (float x = gridStart; x <= gridEnd; x += gridSize) {
@@ -152,5 +152,10 @@ public class LevelEditor {
                 return; // Remove only one entity
             }
         }
+    }
+    
+    public void saveLevel(){
+        level.saveToJSON();
+        System.out.println(String.format("Level saved as %s.json", level.name));
     }
 }

@@ -27,16 +27,10 @@ public class Camera {
         this.useBounds = false;
     }
 
-    public Camera(App app, float smoothness, float zoom, Player p) {
+    public Camera(App app, float smoothness, float zoom) {
         this(app);
         this.smoothness = smoothness;
         this.zoom = zoom;
-        followPlayer(p);
-    }
-
-    public Camera(App app, boolean editMode) {
-        this(app);
-        this.smoothness = 0;
     }
 
     /**

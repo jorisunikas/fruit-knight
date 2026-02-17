@@ -70,7 +70,8 @@ public class Menu {
     }
 
     public void draw() {
-        app.fill(255, 255, 0);
+        app.stroke(48, 47, 44);
+        app.fill(111);
         app.rect(x, y, width, height);
 
         for (EntityButton entityButton : buttons) {

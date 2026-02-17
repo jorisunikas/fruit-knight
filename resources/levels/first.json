@@ -1,55 +1,267 @@
 [
-    {"class": "Player", "x": 40.0, "y": 100.0},
-  {"class": "Ground1", "x": 0.0, "y": 128.0},
-  {"class": "Ground1", "x": 16.0, "y": 128.0},
-  {"class": "Ground1", "x": 32.0, "y": 128.0},
-  {"class": "Ground1", "x": 48.0, "y": 128.0},
-  {"class": "Ground1", "x": 64.0, "y": 128.0},
-  {"class": "Ground1", "x": 80.0, "y": 128.0},
-  {"class": "Ground1", "x": 96.0, "y": 128.0},
-  {"class": "Ground1", "x": 96.0, "y": 112.0},
-  {"class": "Ground1", "x": 112.0, "y": 128.0},
-  {"class": "Ground1", "x": 128.0, "y": 128.0},
-  {"class": "Ground1", "x": 144.0, "y": 128.0},
-  {"class": "Ground1", "x": 160.0, "y": 128.0},
-  {"class": "Ground1", "x": 176.0, "y": 128.0},
-  {"class": "Ground1", "x": 192.0, "y": 128.0},
-  {"class": "Ground1", "x": 208.0, "y": 128.0},
-  {"class": "Ground1", "x": 224.0, "y": 128.0},
-  {"class": "Ground1", "x": 240.0, "y": 128.0},
-  {"class": "Ground1", "x": 272.0, "y": 128.0},
-  {"class": "Ground1", "x": 336.0, "y": 128.0},
-  {"class": "Ground1", "x": 408.0, "y": 128.0},
-  {"class": "Ground2", "x": 0.0, "y": 144.0},
-  {"class": "Ground2", "x": 16.0, "y": 144.0},
-  {"class": "Ground2", "x": 32.0, "y": 144.0},
-  {"class": "Ground2", "x": 48.0, "y": 144.0},
-  {"class": "Ground2", "x": 64.0, "y": 144.0},
-  {"class": "Ground2", "x": 80.0, "y": 144.0},
-  {"class": "Ground2", "x": 96.0, "y": 144.0},
-  {"class": "Ground2", "x": 112.0, "y": 144.0},
-  {"class": "Ground2", "x": 128.0, "y": 144.0},
-  {"class": "Ground2", "x": 144.0, "y": 144.0},
-  {"class": "Ground2", "x": 160.0, "y": 144.0},
-  {"class": "Ground2", "x": 176.0, "y": 144.0},
-  {"class": "Ground2", "x": 192.0, "y": 144.0},
-  {"class": "Ground2", "x": 208.0, "y": 144.0},
-  {"class": "Ground2", "x": 224.0, "y": 144.0},
-  {"class": "Ground2", "x": 240.0, "y": 144.0},
-  {"class": "Ground2", "x": 0.0, "y": 160.0},
-  {"class": "Ground2", "x": 16.0, "y": 160.0},
-  {"class": "Ground2", "x": 32.0, "y": 160.0},
-  {"class": "Ground2", "x": 48.0, "y": 160.0},
-  {"class": "Ground2", "x": 64.0, "y": 160.0},
-  {"class": "Ground2", "x": 80.0, "y": 160.0},
-  {"class": "Ground2", "x": 96.0, "y": 160.0},
-  {"class": "Ground2", "x": 112.0, "y": 160.0},
-  {"class": "Ground2", "x": 128.0, "y": 160.0},
-  {"class": "Ground2", "x": 144.0, "y": 160.0},
-  {"class": "Ground2", "x": 160.0, "y": 160.0},
-  {"class": "Ground2", "x": 176.0, "y": 160.0},
-  {"class": "Ground2", "x": 192.0, "y": 160.0},
-  {"class": "Ground2", "x": 208.0, "y": 160.0},
-  {"class": "Ground2", "x": 224.0, "y": 160.0},
-  {"class": "Ground2", "x": 240.0, "y": 160.0}
+  {
+    "x": 0,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 16,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 32,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 48,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 64,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 80,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 96,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 96,
+    "y": 112,
+    "class": "Ground1"
+  },
+  {
+    "x": 112,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 128,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 144,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 160,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 176,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 192,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 208,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 224,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 240,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 272,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 336,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 408,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 0,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 16,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 32,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 48,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 64,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 80,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 96,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 112,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 128,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 144,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 160,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 176,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 192,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 208,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 224,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 240,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 0,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 16,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 32,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 48,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 64,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 80,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 96,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 112,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 128,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 144,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 160,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 176,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 192,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 208,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 224,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 240,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 240,
+    "y": 112,
+    "class": "Ground1"
+  }
 ]

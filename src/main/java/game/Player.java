@@ -23,7 +23,7 @@ public class Player extends PhysicsEntity {
     private PImage[] currentAnimation;
     private int currentFrame = 0;
     private int frameCounter = 0;
-    private int frameDelay = 12; // Frames to wait before switching
+    private int frameDelay = 16; // Frames to wait before switching
 
     private enum State {
         IDLE, RUNNING

@@ -3,15 +3,12 @@ package game;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-/*
- * Hello world!
- */
 public class App extends PApplet {
     private Game game;
     public Camera cameraRelease;
     public Camera cameraEdit;
     private LevelEditor editor;
-    public float cameraZoom = 4.0f;
+    public float cameraZoom = 3.2f;
     public int screenWidth = 1024;
     public int screenHeight = 768;
     public int worldWidth = screenWidth / (int) cameraZoom;
@@ -31,11 +28,10 @@ public class App extends PApplet {
     @Override
     public void setup() {
         game = new Game(this);
-        cameraRelease = new Camera(this, cameraSmoothness, cameraZoom, game.player);
-        cameraEdit = new Camera(this);
+        cameraRelease = new Camera(this, cameraSmoothness, cameraZoom);
+        cameraEdit = new Camera(this, 0, 1);
         editor = new LevelEditor(this, cameraEdit, game.currentLevel);
 
-        frameRate(60);
         pixelDensity(displayDensity());
         hint(DISABLE_TEXTURE_MIPMAPS);
     }
@@ -101,6 +97,7 @@ public class App extends PApplet {
             debugMode = !debugMode;
         if (key == 'e')
             editMode = !editMode;
+        if (key == 'l') editor.saveLevel();
 
     }
 
@@ -131,7 +128,7 @@ public class App extends PApplet {
             if (mouseButton == LEFT)
                 editor.handleMousePressed(mouseX, mouseY);
             else if (mouseButton == RIGHT) {
-                editor.handleMouseRightClick(mouseX, mouseY); // ← Add this
+                editor.handleMouseRightClick(mouseX, mouseY); 
             }
         }
     }
