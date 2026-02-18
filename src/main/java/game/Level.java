@@ -1,6 +1,8 @@
 package game;
 
 import java.util.ArrayList;
+
+import game.Entities.Fruit;
 import game.Entities.Ground1;
 import game.Entities.Ground2;
 import game.Entities.Platform1;
@@ -60,6 +62,8 @@ public class Level {
                 return new Platform1(x, y);
             case "Platform2":
                 return new Platform2(x, y);
+            case "Fruit":
+                return new Fruit(x, y);
             case "Player":
                 startingPlayerX = x;
                 startingPlayerY = y;
@@ -77,8 +81,17 @@ public class Level {
 
     public void draw() {
         for (Entity entity : objs) {
+            if(entity instanceof Fruit && ((Fruit)entity).isCollected()) continue;
             entity.draw(app);
         }
+    }
+
+    private JSONObject getPlayerJSONObject(){
+        JSONObject obj = new JSONObject(); 
+        obj.setFloat("x", startingPlayerX);
+        obj.setFloat("y", startingPlayerY);
+        obj.setString("class", "Player");
+        return obj;
     }
 
     public void saveToJSON() {
@@ -86,6 +99,7 @@ public class Level {
         for (Entity entity : objs) {
             arr.append(entity.toJSONObject());
         }
+        arr.append(getPlayerJSONObject());
         app.saveJSONArray(arr, String.format("./resources/levels/%s.json", name));
     }
 }

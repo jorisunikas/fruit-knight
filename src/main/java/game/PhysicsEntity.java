@@ -2,10 +2,13 @@ package game;
 
 import java.util.ArrayList;
 
+import game.Entities.Fruit;
+
 /**
  * PhysicsEntity
  */
 public abstract class PhysicsEntity extends Entity {
+    protected App app;
     protected float velocityX, velocityY;
     protected float gravity;
     protected float friction;
@@ -16,9 +19,10 @@ public abstract class PhysicsEntity extends Entity {
     protected boolean onGround1;
     protected boolean onGround2;
 
-    public PhysicsEntity(float x, float y, float width, float height) {
+    public PhysicsEntity(App app, float x, float y, float width, float height) {
         super(x, y, width, height);
 
+        this.app = app;
         this.velocityX = 0;
         this.velocityY = 0;
         this.gravity = 0.42f;
@@ -66,8 +70,8 @@ public abstract class PhysicsEntity extends Entity {
     }
 
     private void resolveHorizontalCollisions(ArrayList<Entity> solids) {
-
         for (Entity solid : solids) {
+            if(solid instanceof Fruit) continue;
             CollisionResult result = checkCollision(solid);
             if (result.collided) {
                 x += result.penetrationX;
@@ -80,6 +84,7 @@ public abstract class PhysicsEntity extends Entity {
         onGround = false;
 
         for (Entity solid : solids) {
+            if(solid instanceof Fruit) continue;
             if (collidesWith(solid)) {
                 // Calculate horizontal overlap
                 float leftOverlap = (x + width) - solid.x;

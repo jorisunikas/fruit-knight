@@ -11,8 +11,6 @@ public class App extends PApplet {
     public float cameraZoom = 3.2f;
     public int screenWidth = 1024;
     public int screenHeight = 768;
-    public int worldWidth = screenWidth / (int) cameraZoom;
-    public int worldHeight = screenHeight / (int) cameraZoom;
     public int tileSize = 32;
     private float cameraSmoothness = 0.05f;
     public boolean editMode = false;
@@ -49,6 +47,7 @@ public class App extends PApplet {
         background(255);
         game.render();
         cameraRelease.end();
+        game.renderTime();
 
         if (debugMode)
             game.renderDebug();
@@ -70,18 +69,6 @@ public class App extends PApplet {
         cameraEdit.update();
     }
 
-    private void drawGrid() {
-        for (int i = 0; i < worldHeight / 16 + 1; i++) {
-            for (int j = 0; j < worldWidth / 16 + 1; j++) {
-                if ((i + j) % 2 == 0)
-                    continue;
-                noStroke();
-                fill(120);
-                rect(j * 16, i * 16, 16, 16);
-            }
-        }
-    }
-
     private void showMousePosition() {
         fill(0, 0, 255);
         text(String.format("X: %f\nY: %f\n", mouseX / cameraZoom, mouseY / cameraZoom), 10, 10, 100, 100);
@@ -98,6 +85,9 @@ public class App extends PApplet {
         if (key == 'e')
             editMode = !editMode;
         if (key == 'l') editor.saveLevel();
+        if (key == 'n') game.nextLevel();
+        if (key == 'p') game.previousLevel();
+        if (key == 'r') game.resetPlayer();
 
     }
 
@@ -132,5 +122,8 @@ public class App extends PApplet {
             }
         }
     }
-
+    
+    public void setLevel(Level l){
+        editor.setLevel(l);
+    }
 }

@@ -3,6 +3,7 @@ package game;
 import java.io.File;
 import java.util.ArrayList;
 
+import game.Entities.Fruit;
 import game.Entities.Ground1;
 import game.Entities.Ground2;
 import game.Entities.Platform1;
@@ -16,19 +17,23 @@ public class Game {
     Player player;
     ArrayList<Level> levels;
     Level currentLevel;
+    private long startTime;
+    private int currentIndex;
 
     public Game(App app) {
         this.app = app;
         player = new Player(app);
         levels = new ArrayList<>();
+        currentIndex = 0;
 
         loadTextures();
         loadAnimations();
         loadLevels();
 
-        currentLevel = levels.get(0);
+        currentLevel = levels.get(currentIndex);
         player.x = currentLevel.getPlayerX();
         player.y = currentLevel.getPlayerY();
+        startTime = System.currentTimeMillis();
     }
 
     public void render() {
@@ -38,6 +43,44 @@ public class Game {
 
     public void update() {
         player.update(currentLevel.getEntities());
+        checkFruitCollection();
+    }
+
+    public void renderTime() {
+        int size = 32;
+        app.fill(0);
+        app.textSize(size);
+        app.text(String.format("Time: %d", getCurrentTime() / 10), size * 0.5f, size * 1.1f);
+    }
+
+    public void nextLevel() {
+        if (checkIndex(currentIndex + 1)) {
+            currentIndex++;
+            changeLevel(currentIndex);
+        }
+    }
+
+    public void previousLevel() {
+        if (checkIndex(currentIndex - 1)) {
+            currentIndex--;
+            changeLevel(currentIndex);
+        }
+    }
+
+    private boolean checkIndex(int index) {
+        return (index >= 0 && index < levels.size());
+    }
+
+    private void changeLevel(int index) {
+        currentLevel = levels.get(index);
+        player.x = currentLevel.getPlayerX();
+        player.y = currentLevel.getPlayerY();
+        app.setLevel(currentLevel);
+    }
+
+    public void resetPlayer(){
+        player.x = currentLevel.getPlayerX();
+        player.y = currentLevel.getPlayerY();
     }
 
     private void loadTextures() {
@@ -46,6 +89,7 @@ public class Game {
         Ground2.loadTexture("resources/world_tileset.png", app);
         Platform1.loadTexture("resources/platforms.png", app);
         Platform2.loadTexture("resources/platforms.png", app);
+        Fruit.loadTexture("resources/fruit.png", app);
     }
 
     private void loadLevels() {
@@ -65,14 +109,31 @@ public class Game {
         }
     }
 
-    private void loadAnimations(){
+    private void loadAnimations() {
         player.loadAnimations();
     }
 
-    public void renderDebug(){
+    public void renderDebug() {
         float size = 16;
         app.fill(0, 0, 120);
         app.textSize(size);
         player.showDebugMovement(size, size);
+    }
+
+    public void checkFruitCollection() {
+        for (Entity entity : currentLevel.getEntities()) {
+            if (entity instanceof Fruit) {
+                Fruit fruit = (Fruit) entity;
+                if (!fruit.isCollected() && fruit.collidesWith(player)) {
+                    fruit.collect();
+                    nextLevel();
+                }
+            }
+        }
+
+    }
+
+    private long getCurrentTime() {
+        return System.currentTimeMillis() - startTime;
     }
 }

@@ -28,6 +28,7 @@ public class Menu {
         buttons.add(new EntityButton("Ground2", 0, 0, buttonSize));
         buttons.add(new EntityButton("Platform2", 0, 0, buttonSize));
         buttons.add(new EntityButton("Platform1", 0, 0, buttonSize));
+        buttons.add(new EntityButton("Fruit", 0, 0, buttonSize));
 
         updateButtonPositions();
     }

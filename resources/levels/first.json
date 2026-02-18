@@ -35,11 +35,6 @@
     "class": "Ground1"
   },
   {
-    "x": 96,
-    "y": 112,
-    "class": "Ground1"
-  },
-  {
     "x": 112,
     "y": 128,
     "class": "Ground1"
@@ -95,173 +90,208 @@
     "class": "Ground1"
   },
   {
-    "x": 408,
+    "x": 0,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 16,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 32,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 48,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 64,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 80,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 96,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 112,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 128,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 144,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 160,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 176,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 192,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 208,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 224,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 240,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": 0,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 16,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 32,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 48,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 64,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 80,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 96,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 112,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 128,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 144,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 160,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 176,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 192,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 208,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 224,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 240,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": 400,
     "y": 128,
     "class": "Ground1"
   },
   {
-    "x": 0,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 16,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 32,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 48,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 64,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 80,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 96,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 112,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 128,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 144,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 160,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 176,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 192,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 208,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 224,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 240,
-    "y": 144,
-    "class": "Ground2"
-  },
-  {
-    "x": 0,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 16,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 32,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 48,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 64,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 80,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 96,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 112,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 128,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 144,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 160,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 176,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 192,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 208,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 224,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 240,
-    "y": 160,
-    "class": "Ground2"
-  },
-  {
-    "x": 240,
-    "y": 112,
+    "x": 464,
+    "y": 128,
     "class": "Ground1"
+  },
+  {
+    "x": 528,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 544,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 560,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 576,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 592,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 560,
+    "y": 96,
+    "class": "Fruit"
+  },
+  {
+    "x": 16,
+    "y": 100,
+    "class": "Player"
   }
 ]

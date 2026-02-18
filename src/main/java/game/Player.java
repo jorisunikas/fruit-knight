@@ -10,8 +10,6 @@ import processing.data.JSONObject;
  * Player
  */
 public class Player extends PhysicsEntity {
-    private App app;
-
     // textures
     private static PImage texturePack;
 
@@ -42,8 +40,7 @@ public class Player extends PhysicsEntity {
     private float jumpStrength = 4.8f;
 
     public Player(App app, float x, float y) {
-        super(x, y, spriteWidth, spriteHeight);
-        this.app = app;
+        super(app, x, y, spriteWidth, spriteHeight);
 
         currentFrame = 0;
         frameCounter = 0;

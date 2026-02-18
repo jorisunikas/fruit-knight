@@ -91,6 +91,8 @@ public class LevelEditor {
                 return new game.Entities.Platform1(x, y);
             case "Platform2":
                 return new game.Entities.Platform2(x, y);
+            case "Fruit":
+                return new game.Entities.Fruit(x, y);
             default:
                 return null;
         }
@@ -158,4 +160,8 @@ public class LevelEditor {
         level.saveToJSON();
         System.out.println(String.format("Level saved as %s.json", level.name));
     }
-}
+
+    public void setLevel(Level l){
+        this.level = l;
+    }
+}   

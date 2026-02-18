@@ -44,6 +44,11 @@ public class EntityButton {
                 spriteHeight = Platform2.spriteHeight;
                 spriteWidth = Platform2.spriteWidth;
                 break;
+            case "Fruit":
+                e = new Fruit(x, y);
+                spriteHeight = Fruit.spriteHeight;
+                spriteWidth = Fruit.spriteWidth;
+                break;
             default:
                 return null;
         }
