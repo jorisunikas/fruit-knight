@@ -66,6 +66,8 @@ public class Game {
         if (checkIndex(currentIndex + 1)) {
             currentIndex++;
             changeLevel(currentIndex);
+            player.velocityX = 0;
+            player.velocityY = 0;
         } else {
             hasEnded = true;
             finishTime = getCurrentTime();
@@ -160,8 +162,8 @@ public class Game {
 
     public void renderResult() {
         if (hasEnded) {
-            app.textSize(24);
-            String text = String.format("You won! Your time is %.3f", (float) finishTime / 1000);
+            app.textSize(48);
+            String text = String.format("You won! Your time is %.3f sec.", (float) finishTime / 1000);
             app.text(text, (app.width - app.textWidth(text)) * 0.5f, 0.25f * app.height);
         }
     }
