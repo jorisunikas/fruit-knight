@@ -1,21 +1,19 @@
 package game;
 
 import processing.core.PApplet;
-import processing.core.PImage;
 
 public class App extends PApplet {
-    private Game game;
+    public boolean editMode = false;
+    public boolean debugMode = false;
     public Camera cameraRelease;
     public Camera cameraEdit;
+
+    private Game game;
     private LevelEditor editor;
-    public float cameraZoom = 3.2f;
-    public int screenWidth = 1024;
-    public int screenHeight = 768;
-    public int tileSize = 32;
-    private float cameraSmoothness = 0.05f;
-    public boolean editMode = false;
-    public boolean debugMode = true;
-    PImage img;
+    private final float cameraZoom = 3.2f;
+    private final int screenWidth = 1024;
+    private final int screenHeight = 768;
+    private final float cameraSmoothness = 0.05f;
 
     @Override
     public void settings() {
@@ -48,6 +46,7 @@ public class App extends PApplet {
         game.render();
         cameraRelease.end();
         game.renderTime();
+        game.renderResult();
 
         if (debugMode)
             game.renderDebug();
@@ -69,11 +68,6 @@ public class App extends PApplet {
         cameraEdit.update();
     }
 
-    private void showMousePosition() {
-        fill(0, 0, 255);
-        text(String.format("X: %f\nY: %f\n", mouseX / cameraZoom, mouseY / cameraZoom), 10, 10, 100, 100);
-    }
-
     public static void main(String[] args) {
         PApplet.main("game.App");
     }
@@ -82,12 +76,21 @@ public class App extends PApplet {
         game.player.handleKeyPressed(key, keyCode);
         if (key == 't')
             debugMode = !debugMode;
-        if (key == 'e')
+        if (key == 'e') {
             editMode = !editMode;
-        if (key == 'l') editor.saveLevel();
-        if (key == 'n') game.nextLevel();
-        if (key == 'p') game.previousLevel();
-        if (key == 'r') game.resetPlayer();
+            if (editMode)
+                game.stopTime();
+            else
+                game.startTime();
+        }
+        if (key == 'l')
+            editor.saveLevel();
+        if (key == 'n')
+            game.nextLevel();
+        if (key == 'p')
+            game.previousLevel();
+        if (key == 'r')
+            game.resetPlayer();
 
     }
 
@@ -118,12 +121,12 @@ public class App extends PApplet {
             if (mouseButton == LEFT)
                 editor.handleMousePressed(mouseX, mouseY);
             else if (mouseButton == RIGHT) {
-                editor.handleMouseRightClick(mouseX, mouseY); 
+                editor.handleMouseRightClick(mouseX, mouseY);
             }
         }
     }
-    
-    public void setLevel(Level l){
+
+    public void setLevel(Level l) {
         editor.setLevel(l);
     }
 }

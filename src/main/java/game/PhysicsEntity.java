@@ -86,21 +86,16 @@ public abstract class PhysicsEntity extends Entity {
         for (Entity solid : solids) {
             if(solid instanceof Fruit) continue;
             if (collidesWith(solid)) {
-                // Calculate horizontal overlap
                 float leftOverlap = (x + width) - solid.x;
                 float rightOverlap = (solid.x + solid.width) - x;
                 float minHorizontalOverlap = Math.min(leftOverlap, rightOverlap);
 
-                // Only handle as vertical collision if significantly overlapping horizontally
-                // (at least half the player's width)
                 if (minHorizontalOverlap > width * 0.2f) {
                     if (velocityY > 0) {
-                        // Falling - land on top
                         y = solid.y - height;
                         velocityY = 0;
                         onGround = true;
                     } else if (velocityY < 0) {
-                        // Moving up - hit ceiling
                         y = solid.y + solid.height;
                         velocityY = 0;
                     }

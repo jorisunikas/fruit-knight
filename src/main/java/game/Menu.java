@@ -59,13 +59,6 @@ public class Menu {
         this.width = maxWidth;
     }
 
-    private void calculateSize() {
-        int rows = (int) Math.ceil((float) buttons.size() / columns);
-
-        this.width = columns * (buttonSize + padding) + padding;
-        this.height = rows * (buttonSize + padding) + padding;
-    }
-
     public boolean hasSelected() {
         return false;
     }

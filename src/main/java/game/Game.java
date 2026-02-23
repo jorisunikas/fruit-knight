@@ -13,18 +13,23 @@ import game.Entities.Platform2;
  * Game
  */
 public class Game {
-    App app;
-    Player player;
-    ArrayList<Level> levels;
-    Level currentLevel;
+    public Player player;
+    public Level currentLevel;
+
+    private App app;
+    private ArrayList<Level> levels;
     private long startTime;
+    private long additionalTime;
+    private long finishTime;
     private int currentIndex;
+    private boolean hasEnded;
 
     public Game(App app) {
         this.app = app;
         player = new Player(app);
         levels = new ArrayList<>();
         currentIndex = 0;
+        additionalTime = 0;
 
         loadTextures();
         loadAnimations();
@@ -34,6 +39,8 @@ public class Game {
         player.x = currentLevel.getPlayerX();
         player.y = currentLevel.getPlayerY();
         startTime = System.currentTimeMillis();
+        finishTime = 0;
+        hasEnded = false;
     }
 
     public void render() {
@@ -47,16 +54,22 @@ public class Game {
     }
 
     public void renderTime() {
+        if (hasEnded)
+            return;
         int size = 32;
         app.fill(0);
         app.textSize(size);
-        app.text(String.format("Time: %d", getCurrentTime() / 10), size * 0.5f, size * 1.1f);
+        app.text(String.format("Time: %.2f", (float) getCurrentTime() / 1000), size * 0.5f, size * 1.1f);
     }
 
     public void nextLevel() {
         if (checkIndex(currentIndex + 1)) {
             currentIndex++;
             changeLevel(currentIndex);
+        } else {
+            hasEnded = true;
+            finishTime = getCurrentTime();
+            stopTime();
         }
     }
 
@@ -78,7 +91,7 @@ public class Game {
         app.setLevel(currentLevel);
     }
 
-    public void resetPlayer(){
+    public void resetPlayer() {
         player.x = currentLevel.getPlayerX();
         player.y = currentLevel.getPlayerY();
     }
@@ -134,6 +147,22 @@ public class Game {
     }
 
     private long getCurrentTime() {
-        return System.currentTimeMillis() - startTime;
+        return System.currentTimeMillis() - startTime + additionalTime;
+    }
+
+    public void stopTime() {
+        additionalTime += System.currentTimeMillis() - startTime;
+    }
+
+    public void startTime() {
+        startTime = System.currentTimeMillis();
+    }
+
+    public void renderResult() {
+        if (hasEnded) {
+            app.textSize(24);
+            String text = String.format("You won! Your time is %.3f", (float) finishTime / 1000);
+            app.text(text, (app.width - app.textWidth(text)) * 0.5f, 0.25f * app.height);
+        }
     }
 }

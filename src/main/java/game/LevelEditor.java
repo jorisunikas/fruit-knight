@@ -49,13 +49,11 @@ public class LevelEditor {
     }
 
     public void handleMousePressed(float mouseX, float mouseY) {
-        // Check if clicking on menu first
         if (menu.containsPoint(mouseX, mouseY)) {
             menu.handleMousePressed(mouseX, mouseY);
             return;
         }
 
-        // Place entity in world
         if (menu.hasSelection()) {
             placeEntity(mouseX, mouseY);
         }
@@ -66,13 +64,11 @@ public class LevelEditor {
         float worldX = camera.screenToWorldX(screenX);
         float worldY = camera.screenToWorldY(screenY);
 
-        // Snap to grid
         if (snapToGrid) {
             worldX = (int) (worldX / gridSize) * gridSize;
             worldY = (int) (worldY / gridSize) * gridSize;
         }
 
-        // Create entity based on selection
         String entityType = menu.getSelectedEntityType();
         Entity newEntity = createEntity(entityType, worldX, worldY);
 
@@ -110,58 +106,50 @@ public class LevelEditor {
         app.stroke(100, 100, 100, 50);
         app.strokeWeight(1 / camera.getZoom());
 
-        // Just draw a large grid area (e.g., -5000 to +5000)
         float gridStart = -2048;
         float gridEnd = 2048;
 
-        // Draw vertical lines
         for (float x = gridStart; x <= gridEnd; x += gridSize) {
             app.line(x, gridStart, x, gridEnd);
+            app.line(gridStart, x, gridEnd, x);
         }
 
-        // Draw horizontal lines
         for (float y = gridStart; y <= gridEnd; y += gridSize) {
-            app.line(gridStart, y, gridEnd, y);
         }
 
         app.noStroke();
     }
 
     public void handleMouseRightClick(float mouseX, float mouseY) {
-        // Don't delete if clicking on menu
         if (menu.containsPoint(mouseX, mouseY)) {
             return;
         }
 
-        // Convert to world coordinates
         float worldX = camera.screenToWorldX(mouseX);
         float worldY = camera.screenToWorldY(mouseY);
 
-        // Find and remove entity at this position
         removeEntityAt(worldX, worldY);
     }
 
     private void removeEntityAt(float worldX, float worldY) {
-        // Find entity at this position
         for (int i = level.getEntities().size() - 1; i >= 0; i--) {
             Entity entity = level.getEntities().get(i);
 
-            // Check if click is inside entity bounds
             if (worldX >= entity.x && worldX <= entity.x + entity.width &&
                     worldY >= entity.y && worldY <= entity.y + entity.height) {
 
                 level.removeEntity(entity);
-                return; // Remove only one entity
+                return;
             }
         }
     }
-    
-    public void saveLevel(){
+
+    public void saveLevel() {
         level.saveToJSON();
         System.out.println(String.format("Level saved as %s.json", level.name));
     }
 
-    public void setLevel(Level l){
+    public void setLevel(Level l) {
         this.level = l;
     }
-}   
+}

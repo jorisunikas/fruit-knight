@@ -80,18 +80,8 @@
     "class": "Ground1"
   },
   {
-    "x": 256,
-    "y": 144,
-    "class": "Ground1"
-  },
-  {
     "x": 272,
     "y": 192,
-    "class": "Ground1"
-  },
-  {
-    "x": 304,
-    "y": 144,
     "class": "Ground1"
   },
   {
@@ -100,18 +90,8 @@
     "class": "Ground1"
   },
   {
-    "x": 352,
-    "y": 144,
-    "class": "Ground1"
-  },
-  {
     "x": 368,
     "y": 192,
-    "class": "Ground1"
-  },
-  {
-    "x": 400,
-    "y": 144,
     "class": "Ground1"
   },
   {

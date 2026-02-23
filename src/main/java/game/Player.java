@@ -10,7 +10,6 @@ import processing.data.JSONObject;
  * Player
  */
 public class Player extends PhysicsEntity {
-    // textures
     private static PImage texturePack;
 
     public final static int spriteWidth = 14;
@@ -21,17 +20,15 @@ public class Player extends PhysicsEntity {
     private PImage[] currentAnimation;
     private int currentFrame = 0;
     private int frameCounter = 0;
-    private int frameDelay = 16; // Frames to wait before switching
+    private int frameDelay = 16;
 
     private enum State {
         IDLE, RUNNING
     }
 
     private State currentState;
-
     private boolean facingRight = true;
 
-    // movement
     private boolean leftPressed = false;
     private boolean rightPressed = false;
     private boolean jumpPressed = false;
@@ -69,14 +66,11 @@ public class Player extends PhysicsEntity {
         }
 
         applyPhysics(solids);
-
         updateAnimation();
     }
 
     public void draw(App app) {
         app.pushMatrix();
-
-        // Flip sprite based on direction
         if (!facingRight) {
             app.translate(x + spriteWidth, y);
             app.scale(-1, 1);
@@ -84,11 +78,10 @@ public class Player extends PhysicsEntity {
         } else {
             app.image(currentAnimation[currentFrame], x, y, spriteWidth, spriteHeight);
         }
-
         app.popMatrix();
     }
 
-    public void draw(App app, float scalar){
+    public void draw(App app, float scalar) {
         draw(app);
     }
 
@@ -139,9 +132,7 @@ public class Player extends PhysicsEntity {
             for (int i = 0; i < runFrames.length / 2; i++) {
                 runFrames[j * 6 + i] = texturePack.get(8 + 32 * i, 74 + 32 * j, spriteWidth, spriteHeight);
             }
-
         currentAnimation = idleFrames;
-        
     }
 
     private void updateAnimation() {

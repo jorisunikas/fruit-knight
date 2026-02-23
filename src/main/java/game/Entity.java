@@ -28,13 +28,11 @@ public abstract class Entity {
             return new CollisionResult(false, "none", 0, 0, null);
         }
         
-        // Calculate overlaps from all four sides
         float overlapLeft = (x + width) - other.x;
         float overlapRight = (other.x + other.width) - x;
         float overlapTop = (y + height) - other.y;
         float overlapBottom = (other.y + other.height) - y;
         
-        // Find minimum overlap (the side we collided from)
         float minOverlap = Math.min(
             Math.min(overlapLeft, overlapRight),
             Math.min(overlapTop, overlapBottom)
