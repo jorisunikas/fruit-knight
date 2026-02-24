@@ -15,8 +15,8 @@ import processing.data.JSONObject;
  */
 public class Level {
     private ArrayList<Entity> objs;
-    private float startingPlayerX;
-    private float startingPlayerY;
+    private float startingPlayerX = 16;
+    private float startingPlayerY = 100;
     private App app;
     public String name;
 
@@ -32,6 +32,12 @@ public class Level {
             if (e != null)
                 objs.add(e);
         }
+    }
+
+    public Level(App app, String name){
+        this.name = name;
+        this.app = app;
+        objs = new ArrayList<>();
     }
 
     public ArrayList<Entity> getEntities() {

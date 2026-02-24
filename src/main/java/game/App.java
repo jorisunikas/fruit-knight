@@ -91,6 +91,7 @@ public class App extends PApplet {
             game.previousLevel();
         if (key == 'r')
             game.resetPlayer();
+        if (key == 'o') game.createNewLevel();
 
     }
 

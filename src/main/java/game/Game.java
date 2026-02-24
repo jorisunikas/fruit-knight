@@ -23,6 +23,7 @@ public class Game {
     private long finishTime;
     private int currentIndex;
     private boolean hasEnded;
+    private int newLevelNumber;
 
     public Game(App app) {
         this.app = app;
@@ -30,6 +31,7 @@ public class Game {
         levels = new ArrayList<>();
         currentIndex = 0;
         additionalTime = 0;
+        newLevelNumber = 1;
 
         loadTextures();
         loadAnimations();
@@ -51,6 +53,7 @@ public class Game {
     public void update() {
         player.update(currentLevel.getEntities());
         checkFruitCollection();
+        checkIfPlayerReset();
     }
 
     public void renderTime() {
@@ -165,6 +168,18 @@ public class Game {
             app.textSize(48);
             String text = String.format("You won! Your time is %.3f sec.", (float) finishTime / 1000);
             app.text(text, (app.width - app.textWidth(text)) * 0.5f, 0.25f * app.height);
+        }
+    }
+
+    public void createNewLevel() {
+        Level l = new Level(app, String.format("%d", newLevelNumber));
+        newLevelNumber++;
+        levels.add(l);
+    }
+
+    public void checkIfPlayerReset() {
+        if (player.y >= 600) {
+            resetPlayer();
         }
     }
 }

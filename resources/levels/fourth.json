@@ -45,6 +45,11 @@
     "class": "Fruit"
   },
   {
+    "x": 304,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
     "x": 16,
     "y": 100,
     "class": "Player"
