@@ -6,6 +6,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'application'
+    id 'com.gradleup.shadow' version "9.4.1"
 }
 
 repositories {
@@ -26,10 +27,6 @@ application {
     mainClass = 'game.App'
 }
 
-group = 'com.joris'
-version = '1.0-SNAPSHOT'
-description = 'laboratorinis1'
-
 publishing {
     publications {
         maven(MavenPublication) {
@@ -44,4 +41,9 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Javadoc) {
     options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    archiveBaseName = 'fruit-knight'
+    archiveClassifier = ''
 }

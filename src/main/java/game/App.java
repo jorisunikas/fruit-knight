@@ -30,6 +30,7 @@ public class App extends PApplet {
 
         pixelDensity(displayDensity());
         hint(DISABLE_TEXTURE_MIPMAPS);
+        surface.setTitle("Fruit Knight");
     }
 
     @Override

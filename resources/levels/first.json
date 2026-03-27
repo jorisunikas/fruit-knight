@@ -290,6 +290,161 @@
     "class": "Fruit"
   },
   {
+    "x": 0,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -16,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -16,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -32,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -48,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -64,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -64,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -80,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -96,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -112,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -128,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": -144,
+    "y": 128,
+    "class": "Ground1"
+  },
+  {
+    "x": 0,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -16,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -32,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -48,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -64,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -80,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -96,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -112,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -128,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -144,
+    "y": 144,
+    "class": "Ground2"
+  },
+  {
+    "x": -144,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -128,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -112,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -80,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -96,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -64,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -48,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -32,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
+    "x": -16,
+    "y": 160,
+    "class": "Ground2"
+  },
+  {
     "x": 16,
     "y": 100,
     "class": "Player"

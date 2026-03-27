@@ -2,6 +2,10 @@
 
 Fruit Knight is a 2D platformer game written in Java 21 using the [Processing](https://processing.org/) library.
 
+<p align="center">
+  <img src="resources/gameplay.gif" width="600" alt="Fruit Knight Gameplay Demo">
+</p>
+
 ## Objective
 
 Collect all fruits as fast as possible. A level contains only one fruit, which transports the player to the next level. Collecting the fruit on the last level stops the timer and presents the score.
@@ -30,7 +34,7 @@ The project can be compiled into a standalone JAR using the [Shadow](https://plu
 ./gradlew shadowJar
 ```
 
-The output `fruit-knight.jar` will be located in app/build/libs directory.
+The output `fruit-knight.jar` will be located in build/libs directory.
 
 ## Controls
 
