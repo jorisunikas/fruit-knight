@@ -91,7 +91,8 @@ public class App extends PApplet {
             game.previousLevel();
         if (key == 'r')
             game.resetPlayer();
-        if (key == 'o') game.createNewLevel();
+        if (key == 'o')
+            game.createNewLevel();
 
     }
 
@@ -105,7 +106,6 @@ public class App extends PApplet {
     }
 
     public void mouseWheel(processing.event.MouseEvent event) {
-        // Zoom with mouse wheel
         cameraEdit.adjustZoom(-event.getCount() * 0.1f);
     }
 
