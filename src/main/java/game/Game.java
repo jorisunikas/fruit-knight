@@ -57,14 +57,12 @@ public class Game {
     }
 
     public void renderTime() {
-        /*
         if (hasEnded)
             return;
         int size = 32;
         app.fill(0);
         app.textSize(size);
         app.text(String.format("Time: %.2f", (float) getCurrentTime() / 1000), size * 0.5f, size * 1.1f);
-        */
     }
 
     public void nextLevel() {

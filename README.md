@@ -74,6 +74,10 @@ New levels will be subsequently named: "1.json", "2.json", ...
 - Quick Reset - Game automatically resets the player, when the sprite falls off, however manual reset can be triggered upon pressing R.
 - Editable levels - levels can be edited during the game, no need to use another application externally.
 
+## Roadmap
+
+Scripting engine — ability to write player instructions in Python-like code, interpreted and executed within the game loop, allowing high-level code to control the player.
+
 ## Resources
 
 - [Processing](https://processing.org/) — graphics library used for rendering
