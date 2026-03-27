@@ -76,7 +76,7 @@ New levels will be subsequently named: "1.json", "2.json", ...
 
 ## Roadmap
 
-Scripting engine — ability to write player instructions in Python-like code, interpreted and executed within the game loop, allowing high-level code to control the player.
+Scripting engine - ability to write player instructions in Python-like code, interpreted and executed within the game loop, allowing high-level code to control the player.
 
 ## Resources
 
