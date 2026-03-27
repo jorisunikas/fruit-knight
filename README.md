@@ -1,6 +1,6 @@
-# Platformer
+# Fruit Knight
 
-A 2D platformer game written in Java 21 using the [Processing](https://processing.org/) library.
+Fruit Knight is a 2D platformer game written in Java 21 using the [Processing](https://processing.org/) library.
 
 ## Objective
 
